@@ -9,7 +9,7 @@ TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTQyODE5MDYsImlhdCI6MT
 
 class TradeSignalClient:
     def __init__(self, test_mode=False):
-        self.uri = f"ws://{WEBSOCKET_HOST}:{WEBSOCKET_PORT}"
+        self.uri = f"wss://{WEBSOCKET_HOST}:{WEBSOCKET_PORT}"
         self.test_mode = test_mode
     
     async def connect_and_receive(self):
