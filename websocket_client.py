@@ -5,7 +5,7 @@ import argparse
 from datetime import datetime
 WEBSOCKET_HOST = "0.0.0.0"
 WEBSOCKET_PORT = 8765
-TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTQyODE5MDYsImlhdCI6MTc1MTY4OTkwNiwibm90ZSI6InRlc3QgdG9rZW4ifQ.HYLhKxHB5QzpJLNjPnDf0tES7jrv_KSJY4-R6t8JE3Y"
+TOKEN = "eyJhbGciOi..."
 
 class TradeSignalClient:
     def __init__(self, test_mode=False):
