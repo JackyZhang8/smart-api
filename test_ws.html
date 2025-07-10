@@ -43,7 +43,7 @@
     const output = document.getElementById('output');
     output.innerHTML = '正在获取数据...';
 
-    axios.get("https://{api}/predict?symbol=ethusdt")
+    axios.get("https://{API_URL}/predict?symbol=ethusdt")
       .then(response => {
         const { confidence, prediction, price, price_range, timestamp } = response.data.data;
 
