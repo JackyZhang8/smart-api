@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>交易系统 API 测试</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f4f4f4;
+    }
+    button {
+      margin: 10px 10px 0 0;
+      padding: 10px 20px;
+    }
+    #output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>交易系统 API 测试</h1>
+
+  <label>Token:<br><textarea id="token" rows="4" style="width: 100%; max-width: 600px;"></textarea></label><br><br>
+  <label>Strategy: <input id="strategy" type="text" value="b01"></label><br><br>
+
+  <button onclick="callApi('/pnl_summary')">获取盈亏汇总</button>
+  <button onclick="callApi('/positions')">获取持仓信息</button>
+  <button onclick="callApi('/trades')">获取交易历史</button>
+  <button onclick="callApi('/signals')">获取交易信号</button>
+
+  <div id="output">点击上方按钮查看结果</div>
+
+  <script>
+    const baseUrl = 'https://{API_URL}'; // 替换成你的 API 域名
+
+    async function callApi(path) {
+      const token = document.getElementById('token').value;
+      const strategy = document.getElementById('strategy').value;
+      const url = `${baseUrl}${path}?strategy=${strategy}&offset=0&limit=5`;
+
+      const output = document.getElementById('output');
+      output.textContent = '请求中...';
+
+      try {
+        const res = await fetch(url, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const data = await res.json();
+        output.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        output.textContent = '请求失败: ' + err;
+      }
+    }
+  </script>
+</body>
+</html>
